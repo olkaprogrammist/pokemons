@@ -30,7 +30,10 @@
     "material": "^0.3.0",
     "ngrx": "^2.0.1",
     "rxjs": "^6.0.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@angular/material": "latest",
+    "@ngrx/effects": "latest",
+    "@ngrx/router-store": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
