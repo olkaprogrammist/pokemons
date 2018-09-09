@@ -1,0 +1,20 @@
+.full-card {
+  display: flex;
+}
+
+.card-title {
+  font-size: 24px;
+  color: brown;
+}
+
+.card-img {
+  width: 250px;
+  height: 250px;
+}
+
+.details {
+  font-size: 18px;
+  height: 250px;
+  width: 250px;
+  border: 1px brown;
+}
