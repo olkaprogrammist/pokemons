@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './containers/app/app.component';
 import { CoreModule } from "./core/core.module";
+import { SearchModule } from "./search/search.module";
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { CoreModule } from "./core/core.module";
   imports: [
     BrowserModule,
     CoreModule.forRoot(),
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

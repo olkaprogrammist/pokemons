@@ -12,7 +12,7 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  private static readonly searchUrl = 'api/search';
+  private static readonly searchUrl = 'localhost:3000/pokemons';
 
   public getSearchResults(query: SearchObject): Observable<SearchResults> {
     const searchText = encodeURIComponent(query.searchText);
