@@ -9,6 +9,9 @@ import { MatCardModule } from '@angular/material';
     CommonModule,
     MatCardModule,
   ],
+  exports: [
+    HeaderComponent,
+  ],
   declarations: [HeaderComponent]
 })
 export class CoreModule {

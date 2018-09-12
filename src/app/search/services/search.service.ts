@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { SearchObject } from "../models/search-object";
-import { Observable, of } from "rxjs/index";
-import { catchError } from "rxjs/internal/operators";
-import { SearchResults } from "../models/search-results";
+import { SearchObject } from '../models/search-object';
+import { Observable, of } from 'rxjs/index';
+import { catchError } from 'rxjs/internal/operators';
+import { SearchResults } from '../models/search-results';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class SearchService {
   public getSearchResults(query: SearchObject): Observable<SearchResults> {
     const searchText = encodeURIComponent(query.searchText);
 
-    let params = `searchText=${searchText}&pageSize=${query.pageSize}&pageNum=${query.pageNumber}` ;
+    const params = `searchText=${searchText}&pageSize=${query.pageSize}&pageNum=${query.pageNumber}`;
     const url = `${SearchService.searchUrl}?${params}`;
 
     return this.http.get(url)

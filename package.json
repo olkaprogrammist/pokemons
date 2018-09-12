@@ -9,8 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "json-server": "json-server --watch db.json",
-    "proxy": "ng serve --proxy-config proxy.conf.json",
-    "mock-proxy": "concurrently --kill-others \"npm run json-server\" \"npm run proxy\""
+    "full-start": "concurrently --kill-others \"npm run json-server\" \"npm run start\""
   },
   "private": true,
   "dependencies": {
@@ -28,7 +27,6 @@
     "@ngrx/effects": "latest",
     "@ngrx/router-store": "latest",
     "@ngrx/store": "latest",
-    "angular-material-source": "github:angular/material",
     "core-js": "^2.5.4",
     "immutable": "^3.8.2",
     "material": "^0.3.0",
