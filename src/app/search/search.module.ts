@@ -12,6 +12,7 @@ import { FullCardComponent } from './components/full-card/full-card.component';
   imports: [
     CommonModule,
     RouterModule.forChild([
+      { path: '', component: FullCardComponent},
       {
         path: 'resource/:id',
         component: FullCardComponent,
