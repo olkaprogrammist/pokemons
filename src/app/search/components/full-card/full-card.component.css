@@ -1,20 +1,42 @@
 .full-card {
   display: flex;
+  background-color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: 100px auto;
+  height: 600px;
 }
 
 .card-title {
-  font-size: 24px;
+  font-size: 48px;
   color: brown;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto ;
 }
 
 .card-img {
-  width: 250px;
-  height: 250px;
+  width: 600px;
+  height: 600px;
+  background-color: brown;
 }
 
 .details {
-  font-size: 18px;
-  height: 250px;
-  width: 250px;
+  font-size: 26px;
   border: 1px brown;
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+
+.details span{
+  display: block;
+  width: 100%;
+}
+
+.content {
+  display: block;
+  width: 60%;
 }

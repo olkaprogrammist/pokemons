@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SearchResult } from '../../models/search-result';
 
 @Component({
   selector: 'app-search-card',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-card.component.css']
 })
 export class SearchCardComponent implements OnInit {
+  @Input() public data: SearchResult;
+  public title: string;
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.title = this.data.title;
   }
 
 }

@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { State } from '../../reducers/search.reducer';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css']
 })
-export class SearchBarComponent implements OnInit {
+export class SearchBarComponent implements OnInit, OnDestroy {
+  public searchInputControl: FormControl;
+  public originalSearchQueryValue: string;
 
-  constructor() { }
+  private routeSubscription: Subscription = new Subscription();
 
-  ngOnInit() {
+  constructor(  private router: Router,
+                private store: Store<State>,
+                private route: ActivatedRoute, ) { }
+
+  public ngOnInit() {
+    this.routeSubscription = this.route.queryParamMap.subscribe((params) => {
+      this.searchInputControl.setValue(params.get('query'));
+      this.originalSearchQueryValue = params.get('query');
+    });
+  }
+
+  public onSearch() {
+    this.router.navigate(['/search'], {queryParams: {query: this.searchInputControl.value}});
+  }
+
+  public clearSearch() {
+    this.searchInputControl.setValue('');
+  }
+
+  public ngOnDestroy() {
+    this.routeSubscription.unsubscribe();
   }
 
 }

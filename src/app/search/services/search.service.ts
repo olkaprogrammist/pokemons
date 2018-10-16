@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SearchObject } from '../models/search-object';
 import { Observable, of } from 'rxjs/index';
 import { catchError } from 'rxjs/internal/operators';
-import { SearchResults } from '../models/search-results';
+import { SearchResults } from '../models/search-result';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

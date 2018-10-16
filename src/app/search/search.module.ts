@@ -7,14 +7,19 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import * as fromSearchResults from './reducers/search.reducer';
 import { FullCardComponent } from './components/full-card/full-card.component';
+import { MatToolbarModule, MatIconModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatIconModule,
     RouterModule.forChild([
-      { path: '', component: FullCardComponent},
+      { path: '', component: SearchResultsComponent},
       {
-        path: 'resource/:id',
+        path: 'resource/id',
         component: FullCardComponent,
       }
     ]),
