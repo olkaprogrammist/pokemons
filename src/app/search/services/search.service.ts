@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { SearchObject } from '../models/search-object';
 import { Observable, of } from 'rxjs/index';
 import { catchError } from 'rxjs/internal/operators';
-import { SearchResults } from '../models/search-result';
+import { SearchResult } from '../models/search-result';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class SearchService {
 
   private static readonly searchUrl = 'localhost:3000/pokemons';
 
-  public getSearchResults(query: SearchObject): Observable<SearchResults> {
+  public getSearchResults(query: SearchObject): Observable<SearchResult> {
     const searchText = encodeURIComponent(query.searchText);
 
     const params = `searchText=${searchText}&pageSize=${query.pageSize}&pageNum=${query.pageNumber}`;

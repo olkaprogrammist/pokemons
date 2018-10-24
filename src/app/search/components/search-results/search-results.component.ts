@@ -7,7 +7,7 @@ import { SearchResult } from '../../models/search-result';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  public asList = true;
+  public asList = false;
   public searchResults: SearchResult[] = [{title: 'Kek', id: '1'}];
 
   constructor() { }

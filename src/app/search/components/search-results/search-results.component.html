@@ -9,8 +9,13 @@
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="!asList">
+  <ng-container *ngIf="!asList" class="cards-container">
     <div *ngFor="let item of searchResults">
+      <app-search-card [data]="item"></app-search-card>
+      <app-search-card [data]="item"></app-search-card>
+      <app-search-card [data]="item"></app-search-card>
+      <app-search-card [data]="item"></app-search-card>
+      <app-search-card [data]="item"></app-search-card>
       <app-search-card [data]="item"></app-search-card>
     </div>
   </ng-container>
