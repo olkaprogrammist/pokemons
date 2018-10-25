@@ -7,4 +7,11 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   color: brown;
   text-decoration: none;
+  background-color: #fff;
+  min-height: 112px;
+  width: 100%;
+  float: left;
+  z-index: 2;
+  position: fixed;
+  border-bottom: 1px solid #dee2e5;
 }
