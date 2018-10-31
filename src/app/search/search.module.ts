@@ -9,6 +9,7 @@ import * as fromSearchResults from './reducers/search.reducer';
 import { FullCardComponent } from './components/full-card/full-card.component';
 import { MatToolbarModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -16,10 +17,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
+    EffectsModule.forRoot([]),
     RouterModule.forChild([
       { path: '', component: SearchResultsComponent},
       {
-        path: 'resource/id',
+        path: 'resource',
         component: FullCardComponent,
       }
     ]),

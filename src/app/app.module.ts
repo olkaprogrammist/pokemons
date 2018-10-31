@@ -6,6 +6,7 @@ import { AppComponent } from './core/containers/app.component';
 import { CoreModule } from './core/core.module';
 import { SearchModule } from './search/search.module';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import {
   reducers,
   metaReducers,
@@ -19,6 +20,7 @@ import {
     BrowserModule,
     CoreModule.forRoot(),
     SearchModule,
+    EffectsModule.forRoot([]),
     RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' }),
     StoreModule.forRoot(reducers, {}),
   ],

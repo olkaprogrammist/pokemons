@@ -1,4 +1,7 @@
 <div class="search-card">
   <div class="img"></div>
-  <span class="card-title">{{title}}</span>
+  <h2 >
+    <a class="card-title" [routerLink]="['/resource']" [queryParams]="{query: data.id}"
+    >{{title}}</a>
+  </h2>
 </div>

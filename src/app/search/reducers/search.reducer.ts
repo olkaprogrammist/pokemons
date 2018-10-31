@@ -3,14 +3,18 @@ import {
   SearchActions,
   SEARCH_LOAD,
   SEARCH_COMPLETE,
+  FULL_CARD,
 } from '../actions/search.action';
 import { SearchObject } from '../models/search-object';
+import { SearchResult } from '../models/search-result';
+import { s } from '@angular/core/src/render3';
 
 export interface State {
   loading: boolean;
   error: boolean;
   searchObject: SearchObject;
-  searchResults: Immutable.Map<string, {}>,
+  searchResults: Immutable.Map<string, SearchResult>;
+  currentCard: SearchResult;
 }
 
 export const initialState: State = {
@@ -18,6 +22,7 @@ export const initialState: State = {
   error: false,
   searchObject: null,
   searchResults: Immutable.Map({}),
+  currentCard: null,
 };
 
 export function reducer(state = initialState, action: SearchActions): State {
@@ -38,7 +43,16 @@ export function reducer(state = initialState, action: SearchActions): State {
           ...state,
           loading: false,
           searchResults: action.payload,
-        }
+        };
+      }
+    }
+
+    case FULL_CARD: {
+      if (action.payload) {
+        return {
+          ...state,
+          currentCard: action.payload
+        };
       }
     }
 
@@ -56,5 +70,10 @@ export const getSearchResults = (state): any => {
 export const getSelectedLoading = (state): boolean => {
   return state.search ? state.search.loading : null;
 };
+
+export const getFullCard = (state): SearchResult => {
+  debugger
+  return state.search ? state.search.currentCard : null;
+}
 
 
