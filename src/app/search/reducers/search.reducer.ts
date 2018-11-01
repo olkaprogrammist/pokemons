@@ -72,7 +72,6 @@ export const getSelectedLoading = (state): boolean => {
 };
 
 export const getFullCard = (state): SearchResult => {
-  debugger
   return state.search ? state.search.currentCard : null;
 }
 

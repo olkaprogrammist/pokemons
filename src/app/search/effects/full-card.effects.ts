@@ -29,7 +29,7 @@ import { SearchResult } from '../models/search-result';
 
 
 @Injectable()
-export class SearchEffects {
+export class FullCardEffects {
 
   @Effect()
   public searchByText: Observable<Action> = this.actions$.pipe(
@@ -49,13 +49,13 @@ export class SearchEffects {
   @Effect()
   public openFullCard: Observable<Action> = this.actions$.pipe(
     ofType('ROUTER_NAVIGATION'),
-    map((action: any) => action.payload),
+    map((action: RouterNavigationAction) =>  action.payload),
     filter((routerState: any) => {
       const {url} = routerState.event;
       return /resource/.test(url);
     }),
     switchMap((router: any) => {
-      const id = router.query;
+      const id = router.event.id;
       return this.searchService.getCardById(id).pipe(
         map((item: SearchResult) => new FullCardAction(item))
       );

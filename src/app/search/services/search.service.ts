@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchObject } from '../models/search-object';
-import { Observable, of } from 'rxjs/index';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators';
 import { SearchResult } from '../models/search-result';
 import { HttpClient } from '@angular/common/http';
@@ -32,7 +32,21 @@ export class SearchService {
       );
   }
 
+  public getAllResults(): Observable<SearchResult> {
+    const url = `${SearchService.searchUrl}`;
+    return this.http.get(url)
+    .pipe(
+      catchError((err) => {
+      if (err.status === 404) {
+        return of({totalResults: 0, data: []});
+      }
+
+      return of(null);
+    }));
+  }
+
   public getCardById(id: string): Observable<SearchResult> {
+    debugger
     const url = `${SearchService.searchUrl}/${id}`;
     return this.http.get(url)
       .pipe(

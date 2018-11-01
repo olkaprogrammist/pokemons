@@ -10,6 +10,9 @@ import { FullCardComponent } from './components/full-card/full-card.component';
 import { MatToolbarModule, MatIconModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
+import { FullCardEffects } from './effects/full-card.effects';
+import { SearchEffects } from './effects/search.effects';
+
 
 @NgModule({
   imports: [
@@ -17,7 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([SearchEffects, FullCardEffects]),
     RouterModule.forChild([
       { path: '', component: SearchResultsComponent},
       {
