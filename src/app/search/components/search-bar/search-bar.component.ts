@@ -28,7 +28,9 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   public onSearch() {
+    debugger
     this.router.navigate(['/search'], {queryParams: {query: this.searchInputControl.value}});
+    this.clearSearch();
   }
 
   public clearSearch() {

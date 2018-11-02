@@ -5,7 +5,7 @@ import {
   ofType,
 } from '@ngrx/effects';
 import {
-  catchError,
+  catchError, filter,
   map,
   switchMap,
 } from 'rxjs/operators';
@@ -20,8 +20,10 @@ import { SearchService } from '../services/search.service';
 import {
   SEARCH_LOAD,
   SearchLoadAction,
-  SearchCompleteAction,
+  SearchCompleteAction, AllResourcesAction,
 } from '../actions/search.action';
+import { RouterNavigationAction } from '@ngrx/router-store';
+import { SearchResult } from '../models/search-result';
 
 @Injectable()
 export class SearchEffects {
@@ -37,6 +39,21 @@ export class SearchEffects {
           searchObject,
           searchResults: null
         })))
+      );
+    })
+  );
+
+  @Effect()
+  public getAllResources: Observable<Action> = this.actions$.pipe(
+    ofType('ROUTER_NAVIGATION'),
+    map((action: RouterNavigationAction) =>  action.payload),
+    filter((routerState: any) => {
+      const {url} = routerState.event;
+      return !/resource/.test(url);
+    }),
+    switchMap((router: any) => {
+      return this.searchService.getAllResults().pipe(
+        map((item: SearchResult[]) => new AllResourcesAction(item))
       );
     })
   );

@@ -5,12 +5,12 @@
   <ng-container *ngIf="asList">
     <div *ngFor="let item of searchResults">
       <div class="list">
-        <span>{{item.title}}</span>
+        <span>{{item.name}}</span>
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="!asList" class="cards-container">
-    <div *ngFor="let item of searchResults">
+  <ng-container *ngIf="!asList">
+    <div *ngFor="let item of searchResults" class="cards-container">
       <app-search-card [data]="item" class="card"></app-search-card>
     </div>
   </ng-container>

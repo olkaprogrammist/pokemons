@@ -55,8 +55,8 @@ export class FullCardEffects {
       return /resource/.test(url);
     }),
     switchMap((router: any) => {
-      const id = router.event.id;
-      return this.searchService.getCardById(id).pipe(
+      const { query } = router.routerState.root.queryParams;
+      return this.searchService.getCardById(query).pipe(
         map((item: SearchResult) => new FullCardAction(item))
       );
     })

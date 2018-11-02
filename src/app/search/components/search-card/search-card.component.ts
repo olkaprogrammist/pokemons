@@ -8,12 +8,12 @@ import { SearchResult } from '../../models/search-result';
 })
 export class SearchCardComponent implements OnInit {
   @Input() public data: SearchResult;
-  public title: string;
+  public name: string;
 
   constructor() { }
 
   public ngOnInit() {
-    this.title = this.data.title;
+    this.name = this.data.name;
   }
 
 }

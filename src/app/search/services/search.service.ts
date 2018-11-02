@@ -12,7 +12,7 @@ export class SearchService {
 
   constructor(private http: HttpClient) { }
 
-  private static readonly searchUrl = 'localhost:3000/pokemons';
+  private static readonly searchUrl = 'http://localhost:3000/pokemons';
 
   public getSearchResults(query: SearchObject): Observable<SearchResult> {
     const searchText = encodeURIComponent(query.searchText);
@@ -32,13 +32,13 @@ export class SearchService {
       );
   }
 
-  public getAllResults(): Observable<SearchResult> {
+  public getAllResults(): Observable<SearchResult[]> {
     const url = `${SearchService.searchUrl}`;
     return this.http.get(url)
     .pipe(
       catchError((err) => {
       if (err.status === 404) {
-        return of({totalResults: 0, data: []});
+        return of({data: []});
       }
 
       return of(null);
