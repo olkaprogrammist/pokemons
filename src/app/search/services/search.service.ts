@@ -17,14 +17,14 @@ export class SearchService {
   public getSearchResults(query: SearchObject): Observable<SearchResult> {
     const searchText = encodeURIComponent(query.searchText);
 
-    const params = `searchText=${searchText}`;
+    const params = `q=${searchText}`;
     const url = `${SearchService.searchUrl}?${params}`;
 
     return this.http.get(url)
       .pipe(
         catchError((err) => {
           if (err.status === 404) {
-            return of({totalResults: 0, data: []});
+            return of({data: []});
           }
 
           return of(null);
@@ -46,7 +46,6 @@ export class SearchService {
   }
 
   public getCardById(id: string): Observable<SearchResult> {
-    debugger
     const url = `${SearchService.searchUrl}/${id}`;
     return this.http.get(url)
       .pipe(

@@ -7,7 +7,6 @@ import {
 } from '../actions/search.action';
 import { SearchObject } from '../models/search-object';
 import { SearchResult } from '../models/search-result';
-import { s } from '@angular/core/src/render3';
 
 export interface State {
   loading: boolean;
@@ -42,13 +41,12 @@ export function reducer(state = initialState, action: SearchActions): State {
         return {
           ...state,
           loading: false,
-          searchResults: action.payload,
+          searchResults: Immutable.List(action.payload.searchResults),
         };
       }
     }
 
     case ALL_RESOURCES: {
-      debugger
       if (action.payload) {
         return {
           ...state,
@@ -73,10 +71,6 @@ export function reducer(state = initialState, action: SearchActions): State {
 }
 
 
-export const getSearchResults = (state): any => {
-  return state.search ? state.search.searchResults : null;
-};
-
 export const getSelectedLoading = (state): boolean => {
   return state.search ? state.search.loading : null;
 };
@@ -85,9 +79,8 @@ export const getFullCard = (state): SearchResult => {
   return state.search ? state.search.currentCard : null;
 };
 
-export const getAllResults = (state): SearchResult[] => {
-  debugger
+export const getSearchResults = (state): SearchResult[] => {
   return state.search ? state.search.searchResults.toJS() : null;
-}
+};
 
 

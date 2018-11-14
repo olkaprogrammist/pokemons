@@ -3,8 +3,7 @@
     <input id="search-input" class="input"
            placeholder="What are you looking for?"
            (keyup.enter)="searchInputControl.value != null && onSearch()"
-           [formControl]="searchInputControl"
-           data-automation-id="search-input-field"/>
+           [formControl]="searchInputControl"/>
 
     <!--<div class="btn-block">-->
       <!--<button *ngIf="searchInputControl.value != null"-->
@@ -14,13 +13,5 @@
               <!--aria-label="clear search"-->
               <!--data-automation-id="clear-search-btn"-->
       <!--&gt;<mat-icon>cross</mat-icon></button>-->
-      <!--<div class="divider" data-automation-id="search-btn-divider"></div>-->
-      <!--<button data-automation-id="search-btn"-->
-              <!--tabindex="0"-->
-              <!--aria-label="start search"-->
-              <!--(click)="searchInputControl.value != null && onSearch()"-->
-              <!--class="btn search-btn"-->
-      <!--&gt;<mat-icon>search</mat-icon></button>-->
-    <!--</div>-->
   </div>
 </mat-toolbar>

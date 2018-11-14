@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers/search.reducer';
 import { Subscription } from 'rxjs';
+import { SearchLoadAction } from '../../actions/search.action';
 
 @Component({
   selector: 'app-search-bar',
@@ -14,21 +15,21 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   public searchInputControl: FormControl;
   public originalSearchQueryValue: string;
 
-  private routeSubscription: Subscription = new Subscription();
+  private subscription = new Subscription();
 
   constructor(  private router: Router,
                 private store: Store<State>,
                 private route: ActivatedRoute, ) { }
 
   public ngOnInit() {
-    this.routeSubscription = this.route.queryParamMap.subscribe((params) => {
+    this.searchInputControl = new FormControl();
+    this.subscription.add(this.route.queryParamMap.subscribe((params) => {
       this.searchInputControl.setValue(params.get('query'));
       this.originalSearchQueryValue = params.get('query');
-    });
+    }));
   }
 
   public onSearch() {
-    debugger
     this.router.navigate(['/search'], {queryParams: {query: this.searchInputControl.value}});
     this.clearSearch();
   }
@@ -38,7 +39,7 @@ export class SearchBarComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy() {
-    this.routeSubscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }

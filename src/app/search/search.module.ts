@@ -26,7 +26,9 @@ import { SearchEffects } from './effects/search.effects';
       {
         path: 'resource',
         component: FullCardComponent,
-      }
+      },
+      { path: 'search',
+        component: SearchResultsComponent }
     ]),
     StoreModule.forFeature('search', fromSearchResults.reducer),
   ],
