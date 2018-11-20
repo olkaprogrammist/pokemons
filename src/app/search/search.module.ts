@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { FullCardEffects } from './effects/full-card.effects';
 import { SearchEffects } from './effects/search.effects';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SearchEffects } from './effects/search.effects';
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
+    MatPaginatorModule,
     EffectsModule.forFeature([SearchEffects, FullCardEffects]),
     RouterModule.forChild([
       { path: '', component: SearchResultsComponent},
