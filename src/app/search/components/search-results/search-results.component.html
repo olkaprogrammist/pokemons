@@ -1,10 +1,6 @@
 <div class="search-results">
   <app-search-bar class="search-bar"></app-search-bar>
 </div>
-<mat-paginator [length]="searchResults?.length"
-               [pageSize]="21"
-               (page)="pageEvent = $event">
-</mat-paginator>
 <div class="search-results">
   <ng-container *ngIf="asList">
     <div *ngFor="let item of searchResults">
@@ -18,4 +14,5 @@
       <app-search-card [data]="item" class="card"></app-search-card>
     </div>
   </ng-container>
+  <app-paginator></app-paginator>
 </div>

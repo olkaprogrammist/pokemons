@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers/search.reducer';
 import { Subscription } from 'rxjs';
-import { SearchLoadAction } from '../../actions/search.action';
 
 @Component({
   selector: 'app-search-bar',

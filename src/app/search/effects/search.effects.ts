@@ -22,7 +22,10 @@ import { SearchService } from '../services/search.service';
 import {
   SEARCH_LOAD,
   SearchLoadAction,
-  SearchCompleteAction, AllResourcesAction,
+  SearchCompleteAction,
+  CHANGE_PAGE,
+  ChangePageAction,
+  LoadResourceAction,
 } from '../actions/search.action';
 import { RouterNavigationAction } from '@ngrx/router-store';
 import { SearchResult } from '../models/search-result';
@@ -47,16 +50,27 @@ export class SearchEffects {
   );
 
   @Effect()
-  public getAllResources: Observable<Action> = this.actions$.pipe(
+  public getFirstPage: Observable<Action> = this.actions$.pipe(
     ofType('ROUTER_NAVIGATION'),
     map((action: RouterNavigationAction) =>  action.payload),
     filter((routerState: any) => {
       const { url } = routerState.event;
       return !/resource/.test(url) && !/search/.test(url);
     }),
-    switchMap((router: any) => {
-      return this.searchService.getAllResults().pipe(
-        map((item: SearchResult[]) => new AllResourcesAction(item))
+    switchMap(() => {
+      return this.searchService.getCurrentPage(1).pipe(
+        map((item: SearchResult[]) => new LoadResourceAction(item))
+      );
+    })
+  );
+
+  @Effect()
+  public getCurrentPage: Observable<Action> = this.actions$.pipe(
+    ofType(CHANGE_PAGE),
+    map((action: ChangePageAction) => action.payload),
+    switchMap((pageNum: number) => {
+      return this.searchService.getCurrentPage(pageNum).pipe(
+        map((item: SearchResult[]) => new LoadResourceAction(item))
       );
     })
   );

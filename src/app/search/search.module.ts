@@ -13,6 +13,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FullCardEffects } from './effects/full-card.effects';
 import { SearchEffects } from './effects/search.effects';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SearchResultsComponent,
     SearchCardComponent,
     FullCardComponent,
+    PaginatorComponent,
   ]
 })
 export class SearchModule { }

@@ -1,0 +1,18 @@
+<div class="paginator">
+  <div class="wrapper">
+    <button class="arrow-btn"
+            mat-flat-button
+            (click)="goToPage(currentPage - 1)"
+            [disabled]="currentPage === 1"
+    >
+      <mat-icon class="keyboard_arrow_left"></mat-icon>
+    </button>
+    <span class="page-number">{{currentPage}}</span>
+    <button class="arrow-btn"
+            mat-flat-button
+            (click)="goToPage(currentPage + 1)"
+    >
+      <mat-icon class="keyboard_arrow_right"></mat-icon>
+    </button>
+  </div>
+</div>

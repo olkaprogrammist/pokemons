@@ -10,9 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SearchService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   private static readonly searchUrl = 'http://localhost:3000/pokemons';
+  private static readonly pageSize = 12;
 
   public getSearchResults(query: SearchObject): Observable<SearchResult> {
     const searchText = encodeURIComponent(query.searchText);
@@ -32,18 +34,18 @@ export class SearchService {
       );
   }
 
-  public getAllResults(): Observable<SearchResult[]> {
-    const url = `${SearchService.searchUrl}`;
-    return this.http.get(url)
-    .pipe(
-      catchError((err) => {
-      if (err.status === 404) {
-        return of({data: []});
-      }
-
-      return of(null);
-    }));
-  }
+  // public getAllResults(): Observable<SearchResult[]> {
+  //   const url = `${SearchService.searchUrl}`;
+  //   return this.http.get(url)
+  //     .pipe(
+  //       catchError((err) => {
+  //         if (err.status === 404) {
+  //           return of({data: []});
+  //         }
+  //
+  //         return of(null);
+  //       }));
+  // }
 
   public getCardById(id: string): Observable<SearchResult> {
     const url = `${SearchService.searchUrl}/${id}`;
@@ -56,6 +58,21 @@ export class SearchService {
 
           return of(null);
         })
-    );
+      );
+  }
+
+  public getCurrentPage(page: number): Observable<SearchResult[]> {
+    const url = `${SearchService.searchUrl}?_page=${page}&_limit=${SearchService.pageSize}`;
+    return this.http.get(url)
+      .pipe(
+        catchError((err) => {
+          if (err.status === 404) {
+            return of({id: '-1'});
+          }
+
+          return of(null);
+        })
+      );
   }
 }
+

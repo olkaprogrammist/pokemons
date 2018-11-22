@@ -3,7 +3,8 @@ import {
   SearchActions,
   SEARCH_LOAD,
   SEARCH_COMPLETE,
-  FULL_CARD, ALL_RESOURCES,
+  FULL_CARD,
+  LOAD_RESOURCES, CHANGE_PAGE,
 } from '../actions/search.action';
 import { SearchObject } from '../models/search-object';
 import { SearchResult } from '../models/search-result';
@@ -46,7 +47,7 @@ export function reducer(state = initialState, action: SearchActions): State {
       }
     }
 
-    case ALL_RESOURCES: {
+    case LOAD_RESOURCES: {
       if (action.payload) {
         return {
           ...state,
@@ -60,6 +61,17 @@ export function reducer(state = initialState, action: SearchActions): State {
         return {
           ...state,
           currentCard: action.payload
+        };
+      }
+    }
+
+    case CHANGE_PAGE: {
+      if (action.payload) {
+        return {
+          ...state,
+          searchObject: {
+            pageNumber: action.payload
+          }
         };
       }
     }

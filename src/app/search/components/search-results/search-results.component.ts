@@ -13,7 +13,6 @@ import { PageEvent } from '@angular/material';
 export class SearchResultsComponent implements OnInit {
   public asList = false;
   public searchResults: SearchResult[];
-  public pageEvent: PageEvent;
   private subscription = new Subscription();
 
   constructor(private store: Store<State>) { }
