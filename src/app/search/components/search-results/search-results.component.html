@@ -1,11 +1,16 @@
 <div class="search-results">
   <app-search-bar class="search-bar"></app-search-bar>
+<button class="change-card"
+        mat-flat-button
+        (click)="toggleCardView()"
+></button>
 </div>
 <div class="search-results">
   <ng-container *ngIf="asList">
     <div *ngFor="let item of searchResults">
       <div class="list">
-        <span>{{item.name}}</span>
+        <a class="name-link" [routerLink]="['/resource']" [queryParams]="{query: item.id}"
+        >{{item.name}}</a>
       </div>
     </div>
   </ng-container>

@@ -14,6 +14,7 @@ import { FullCardEffects } from './effects/full-card.effects';
 import { SearchEffects } from './effects/search.effects';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { SearchResultsContainerComponent } from './containers/search-results-container/search-results-container.component';
 
 
 @NgModule({
@@ -25,13 +26,13 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     MatPaginatorModule,
     EffectsModule.forFeature([SearchEffects, FullCardEffects]),
     RouterModule.forChild([
-      { path: '', component: SearchResultsComponent},
+      { path: '', component: SearchResultsContainerComponent},
       {
         path: 'resource',
         component: FullCardComponent,
       },
       { path: 'search',
-        component: SearchResultsComponent }
+        component: SearchResultsContainerComponent }
     ]),
     StoreModule.forFeature('search', fromSearchResults.reducer),
   ],
@@ -44,6 +45,7 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     SearchCardComponent,
     FullCardComponent,
     PaginatorComponent,
+    SearchResultsContainerComponent,
   ]
 })
 export class SearchModule { }

@@ -20,7 +20,6 @@ export class SearchResolver implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot) {
     const defaultSearchObject: SearchObject = {
       pageNumber: 0,
-      pageSize: 5,
     }
     const otherParams = route.queryParams.pageSize ?
       Object.assign({}, defaultSearchObject, { pageSize: +route.queryParams.pageSize })

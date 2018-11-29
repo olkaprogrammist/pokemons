@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, } from '@angular/core';
 import { SearchResult } from '../../models/search-result';
-import { Subscription } from 'rxjs';
-import { select, Store } from '@ngrx/store';
-import { getSearchResults, State } from '../../reducers/search.reducer';
-import { PageEvent } from '@angular/material';
 
 @Component({
   selector: 'app-search-results',
@@ -11,17 +7,15 @@ import { PageEvent } from '@angular/material';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-  public asList = false;
-  public searchResults: SearchResult[];
-  private subscription = new Subscription();
+  public asList = true;
+  @Input() public searchResults: SearchResult[];
 
-  constructor(private store: Store<State>) { }
+  constructor() { }
 
   public ngOnInit() {
-    this.subscription.add(this.store.pipe(select(getSearchResults)).subscribe((result) => {
-      if (result) {
-        this.searchResults = result;
-      }
-    }));
+  }
+
+  public toggleCardView() {
+    this.asList = !this.asList;
   }
 }
