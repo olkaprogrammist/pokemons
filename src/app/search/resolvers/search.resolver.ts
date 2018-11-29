@@ -9,7 +9,7 @@ import { State } from '../reducers/search.reducer';
 import {
   SearchLoadAction,
 } from '../actions/search.action';
-import {SearchObject} from "../models/search-object";
+import {SearchObject} from '../models/search-object';
 
 @Injectable()
 export class SearchResolver implements Resolve<any> {
@@ -20,7 +20,7 @@ export class SearchResolver implements Resolve<any> {
   public resolve(route: ActivatedRouteSnapshot) {
     const defaultSearchObject: SearchObject = {
       pageNumber: 0,
-    }
+    };
     const otherParams = route.queryParams.pageSize ?
       Object.assign({}, defaultSearchObject, { pageSize: +route.queryParams.pageSize })
       : defaultSearchObject;
@@ -28,7 +28,7 @@ export class SearchResolver implements Resolve<any> {
     if (route.queryParams.query) {
       this.store.dispatch(new SearchLoadAction({
         searchText: route.queryParams.query,
-        ...otherParams
+        ...otherParams,
       }));
     }
   }

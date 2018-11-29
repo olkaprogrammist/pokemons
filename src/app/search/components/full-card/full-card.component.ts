@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { SearchResult } from '../../models/search-result';
 import { Subscription } from 'rxjs';
 import { Store, select } from '@ngrx/store';
@@ -9,21 +9,7 @@ import { getFullCard, State } from '../../reducers/search.reducer';
   templateUrl: './full-card.component.html',
   styleUrls: ['./full-card.component.scss']
 })
-export class FullCardComponent implements OnInit, OnDestroy {
-  public data: SearchResult;
-  private subscription = new Subscription();
+export class FullCardComponent {
+  @Input() public data: SearchResult;
 
-  constructor(private store: Store<State>) { }
-
-  public ngOnInit() {
-    this.subscription.add(this.store.pipe(select(getFullCard)).subscribe((result: SearchResult) => {
-      if (result) {
-        this.data = result;
-      }
-    }));
-  }
-
-  public ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }

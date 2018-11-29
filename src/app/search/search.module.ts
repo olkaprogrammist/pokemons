@@ -15,6 +15,7 @@ import { SearchEffects } from './effects/search.effects';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { SearchResultsContainerComponent } from './containers/search-results-container/search-results-container.component';
+import { FullCardContainerComponent } from './containers/full-card-container/full-card-container.component';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { SearchResultsContainerComponent } from './containers/search-results-con
       { path: '', component: SearchResultsContainerComponent},
       {
         path: 'resource',
-        component: FullCardComponent,
+        component: FullCardContainerComponent,
       },
       { path: 'search',
         component: SearchResultsContainerComponent }
@@ -46,6 +47,7 @@ import { SearchResultsContainerComponent } from './containers/search-results-con
     FullCardComponent,
     PaginatorComponent,
     SearchResultsContainerComponent,
+    FullCardContainerComponent,
   ]
 })
 export class SearchModule { }
