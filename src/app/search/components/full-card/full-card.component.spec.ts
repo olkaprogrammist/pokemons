@@ -1,25 +1,17 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, } from '@angular/core/testing';
 import { FullCardComponent } from './full-card.component';
 
 describe('FullCardComponent', () => {
+
   let component: FullCardComponent;
-  let fixture: ComponentFixture<FullCardComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FullCardComponent ]
-    })
-    .compileComponents();
+    component = new FullCardComponent();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FullCardComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('basic scenario', () => {
+    it('should create', () => {
+      expect(component).toBeDefined();
+    });
   });
 });

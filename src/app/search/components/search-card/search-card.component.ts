@@ -10,8 +10,6 @@ export class SearchCardComponent implements OnInit {
   @Input() public data: SearchResult;
   public name: string;
 
-  constructor() { }
-
   public ngOnInit() {
     this.name = this.data.name;
   }

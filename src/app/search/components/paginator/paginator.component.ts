@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../reducers/search.reducer';
 import { ChangePageAction } from '../../actions/search.action';
@@ -8,17 +8,13 @@ import { ChangePageAction } from '../../actions/search.action';
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent {
   public currentPage = 1;
 
   public constructor( private store: Store<State>) { }
-
-  public ngOnInit() {
-  }
 
   public goToPage(pageNum) {
     this.currentPage = pageNum;
     this.store.dispatch(new ChangePageAction(pageNum));
   }
-
 }

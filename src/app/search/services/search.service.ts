@@ -34,19 +34,6 @@ export class SearchService {
       );
   }
 
-  // public getAllResults(): Observable<SearchResult[]> {
-  //   const url = `${SearchService.searchUrl}`;
-  //   return this.http.get(url)
-  //     .pipe(
-  //       catchError((err) => {
-  //         if (err.status === 404) {
-  //           return of({data: []});
-  //         }
-  //
-  //         return of(null);
-  //       }));
-  // }
-
   public getCardById(id: string): Observable<SearchResult> {
     const url = `${SearchService.searchUrl}/${id}`;
     return this.http.get(url)

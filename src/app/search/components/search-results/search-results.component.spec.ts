@@ -1,25 +1,23 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, } from '@angular/core/testing';
 import { SearchResultsComponent } from './search-results.component';
 
 describe('SearchResultsComponent', () => {
+
   let component: SearchResultsComponent;
-  let fixture: ComponentFixture<SearchResultsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchResultsComponent ]
-    })
-    .compileComponents();
+    component = new SearchResultsComponent();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SearchResultsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  describe('basic scenario', () => {
+    it('should create', () => {
+      expect(component).toBeDefined();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    it('should toggle asList', () => {
+      component.asList = true;
+      component.toggleCardView();
+      expect(component.asList).toBeFalsy();
+    });
   });
 });

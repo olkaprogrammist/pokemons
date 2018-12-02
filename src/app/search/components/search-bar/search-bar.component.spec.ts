@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, } from '@angular/core/testing';
 import { SearchBarComponent } from './search-bar.component';
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
-  let fixture: ComponentFixture<SearchBarComponent>;
+  let mockRouter;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
-    })
-    .compileComponents();
+    mockRouter = {
+      navigate: jasmine.createSpy('navigate'),
+    };
+    component = new SearchBarComponent(mockRouter);
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SearchBarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  describe('basic scenario', () => {
+    // it('should navigate on search', () => {
+    //   component.onSearch();
+    //   expect(mockRouter.navigate).toHaveBeenCalled();
+    // });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    it('should create', () => {
+      expect(component).toBeDefined();
+    });
   });
 });

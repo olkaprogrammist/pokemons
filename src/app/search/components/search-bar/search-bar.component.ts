@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SearchBarComponent {
   @Input() searchInputControl: FormControl;
 
-  constructor(  private router: Router) { }
+  constructor(private router: Router) { }
 
   public onSearch() {
     this.router.navigate(['/search'], {queryParams: {query: this.searchInputControl.value}});
