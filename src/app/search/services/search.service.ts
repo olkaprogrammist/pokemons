@@ -16,7 +16,7 @@ export class SearchService {
   private static readonly searchUrl = 'http://localhost:3000/pokemons';
   private static readonly pageSize = 12;
 
-  public getSearchResults(query: SearchObject): Observable<SearchResult> {
+  public getSearchResults(query: SearchObject): Observable<any> {
     const searchText = encodeURIComponent(query.searchText);
 
     const params = `q=${searchText}`;
@@ -54,7 +54,7 @@ export class SearchService {
       .pipe(
         catchError((err) => {
           if (err.status === 404) {
-            return of({id: '-1'});
+            return of([{id: '-1'}]);
           }
 
           return of(null);
