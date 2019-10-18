@@ -1,0 +1,8 @@
+<mat-toolbar class="search-bar">
+  <div class="box">
+    <input id="search-input" class="input"
+           placeholder="What are you looking for?"
+           (keyup.enter)="searchInputControl.value != null && onSearch()"
+           [formControl]="searchInputControl"/>
+  </div>
+</mat-toolbar>

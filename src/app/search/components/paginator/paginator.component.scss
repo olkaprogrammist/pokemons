@@ -1,0 +1,34 @@
+.paginator {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+
+  .wrapper{
+    align-items: center;
+    justify-content: center;
+
+    .arrow-btn {
+      width: 30px;
+      height: 30px;
+      margin: 20px;
+      background-color: deepskyblue;
+      border: none;
+
+      &:disabled {
+        background-color: transparent;
+      }
+    }
+
+    .page-number {
+      font-family: Domine;
+      font-weight: 300;
+      text-align: center;
+      font-size: 30px;
+      text-decoration: none;
+      color: brown;
+      line-height: 30px;
+    }
+  }
+}

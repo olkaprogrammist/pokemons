@@ -1,0 +1,26 @@
+.search-card {
+  display: flex;
+  width: 373px !important;
+  height: 178px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-left: brown 8px solid;
+}
+
+.img {
+  width: 130px;
+  height: 130px;
+  margin-top: 24px;
+  margin-left: 24px;
+}
+
+.card-title {
+  font-family: Domine;
+  font-weight: 300;
+  margin-top: 24px;
+  margin-left: 24px;
+  font-size: 30px;
+  text-decoration: none;
+  color: brown;
+
+}

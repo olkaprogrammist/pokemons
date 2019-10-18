@@ -1,0 +1,7 @@
+<div class="search-card">
+  <img class="img" src="pokemons/{{data.id}}.png">
+  <h2 >
+    <a class="card-title" [routerLink]="['/resource']" [queryParams]="{query: data.id}"
+    >{{name}}</a>
+  </h2>
+</div>

@@ -1,0 +1,44 @@
+.search-results {
+  margin: 24px 25px 0 24px;
+
+  .change-card {
+    width: 35px;
+    height: 35px;
+    background-color: brown;
+    position: absolute;
+    top: 270px;
+    left: 30px;
+  }
+}
+
+.cards-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0px;
+}
+
+.card {
+  display: inline-block;
+  margin: 36px 18px 0;
+}
+
+.search-bar {
+
+}
+
+.list {
+  width: 98%;
+  height: 45px;
+  text-align: center;
+
+  .name-link {
+    font-family: Domine;
+    font-weight: 300;
+    margin-top: 24px;
+    margin-left: 24px;
+    font-size: 30px;
+    text-decoration: none;
+    color: brown;
+  }
+}
